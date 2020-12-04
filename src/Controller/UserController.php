@@ -29,4 +29,15 @@ class UserController extends AbstractController
             'list' => $userRepository->findBy(['pole' => $this->getUser()->getPole()])
         ]);
     }
+
+    /**
+     * @Route("/profile", name="user_profile")
+     * @return Response
+     */
+    public function user_profile()
+    {
+        return $this->render('user/profile.html.twig', [
+            'user'=>$this->getUser()
+        ]);
+    }
 }
