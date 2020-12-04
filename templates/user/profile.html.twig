@@ -14,16 +14,14 @@
         <img class="profile_image" src="{{ asset('img/anonyme.jpg') }}">
     </div>
     <h1>{{ user.username }}</h1>
-    {#    <form>
-        <label for="inputFirstname">Firstname</label>
-        <input type="text" value="{{ user.firstname }}" name="firstname" id="inputFirstname" required>
-        <label for="inputSurname">Surname</label>
-        <input type="text" value="{{ user.surname }}" name="surname" id="inputSurname" required>
-        <label for="inputEmail">Email</label>
-        <input type="text" value="{{ user.email }}" name="email" id="inputEmail" required>
-
-        <button class="btn btn-goovies mt-3" type="submit">
-            Enregistrer
-        </button>
-    </form>#}
+    {{ form_start(form_user) }}
+    {{ form_row(form_user.forename) }}
+    {{ form_row(form_user.lastname) }}
+    {{ form_row(form_user.age) }}
+    {{ form_row(form_user.sexe) }}
+    {{ form_row(form_user.phone) }}
+    {{ form_row(form_user.email) }}
+    {{ form_row(form_user.pole) }}
+    <button type="submit" class="btn btn-goovies">Enregistrer</button>
+    {{ form_end(form_user) }}
 {% endblock %}
