@@ -2,6 +2,10 @@ nav.navbar {
     background: #E83E3F;
 }
 
+.navbar-brand img {
+    width: 50px;
+}
+
 .btn.btn-goovies {
     background: #E83E3F;
     color: #fff;

@@ -10,5 +10,17 @@
 {% endblock %}
 
 {% block body %}
-    <p>Je suis bien connecté !</p>
+    <p>Bievenue <b>{{ app.user.username }}</b> !</p>
+
+    {% if list|length > 1 %}
+        <ul>
+            {% for elem in list %}
+                {% if elem.username != app.user.username %}
+                    <li><b>{{ elem.username }}</b> du pôle {{ elem.pole }}</li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="alert alert-warning">Aucune suggestion pour vous..</p>
+    {% endif %}
 {% endblock %}

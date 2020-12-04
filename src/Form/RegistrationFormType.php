@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -19,15 +20,42 @@ class RegistrationFormType extends AbstractType
     {
         $builder
             ->add('username', TextType::class, [
+                'label' => 'Pseudo',
                 'attr' => [
-                    'class' => 'form-control'
+                    'class' => 'form-control mb-3'
+                ]
+            ])
+            ->add('forename', TextType::class, [
+                'label' => 'Prénom',
+                'attr' => [
+                    'class' => 'form-control mb-3'
+                ]
+            ])
+            ->add('lastname', TextType::class, [
+                'label' => 'Nom',
+                'attr' => [
+                    'class' => 'form-control mb-3'
+                ]
+            ])
+            ->add('pole', ChoiceType::class, [
+                'choices' => [
+                    'Direction' => 'Direction',
+                    'Production' => 'Production',
+                    'Communication' => 'Communication',
+                    'Commercial' => 'Commercial',
+                    'Administratif' => 'Administratif',
+                    'Informatique' => 'Informatique'
+                ],
+                'attr' => [
+                    'class' => 'form-control mb-3'
                 ]
             ])
             ->add('agreeTerms', CheckboxType::class, [
+                'label' => 'Accepter les termes',
                 'mapped' => false,
                 'constraints' => [
                     new IsTrue([
-                        'message' => 'You should agree to our terms.',
+                        'message' => 'Vous devez accepter les termes.',
                     ]),
                 ],
                 'attr' => [
@@ -35,8 +63,7 @@ class RegistrationFormType extends AbstractType
                 ]
             ])
             ->add('plainPassword', PasswordType::class, [
-                // instead of being set onto the object directly,
-                // this is read and encoded in the controller
+                'label' => 'Mot de passe',
                 'mapped' => false,
                 'constraints' => [
                     new NotBlank([
@@ -50,7 +77,7 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
                 'attr' => [
-                    'class' => 'form-control'
+                    'class' => 'form-control mb-3'
                 ]
             ])
         ;
